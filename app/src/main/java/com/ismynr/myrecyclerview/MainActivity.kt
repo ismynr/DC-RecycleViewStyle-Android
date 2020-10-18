@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.ActionMode
 import android.view.Menu
 import android.view.MenuItem
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -46,6 +47,12 @@ class MainActivity : AppCompatActivity() {
         rv_heroes.adapter = listHeroAdapter
     }
 
+    private fun showRecyclerGrid(){
+        rv_heroes.layoutManager = GridLayoutManager(this, 2)
+        val gridHeroAdapter = GridHeroAdapter(list)
+        rv_heroes.adapter = gridHeroAdapter
+    }
+
 
     // MENU OPTIONS
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -64,7 +71,7 @@ class MainActivity : AppCompatActivity() {
                 showRecyclerList()
             }
             R.id.action_grid -> {
-
+                showRecyclerGrid()
             }
             R.id.action_cardview -> {
 
